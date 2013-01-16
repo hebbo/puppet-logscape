@@ -1,0 +1,21 @@
+#!/bin/bash
+# Redirect stderr so everything ends up in the log file
+exec 2>&1
+
+# Announce ourselves
+echo "Logscape <%= @version %> start"
+
+# Set environment variables
+export JAVA_HOME=<%= @java_home %>
+export PATH=$JAVA_HOME/bin:<%= @installdir %>:$PATH
+export LC_CTYPE=UTF-8
+
+cd <%= @installdir %>
+exec java \
+  -DVSCAPE_BOOTSTRAP \
+  -XX:MaxPermSize=32M -Xms16M -Xmx32M \
+  -Dlog4j.configuration=<%= @installdir %>/agent-log4j.properties \
+  -Xverify:none \
+  -cp <%= @installdir %>:boot.jar \
+  com.liquidlabs.boot.BootStrapper \
+  stcp://<%= @management_host %>:<%= @management_port %>
