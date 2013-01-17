@@ -1,12 +1,12 @@
-define logscape::service  (
+class logscape::service  (
   $basedir,
   $logdir,
   $version,
   $user,
   $group,
 ) {
-  $product = "logscape-${version}"
-  runit::service { "service-${product}-${basedir}":
+  $installdir = "${basedir}/logscape-${version}"
+  runit::service { "service-logscape-${version}-${basedir}":
     service     => 'logscape',
     basedir     => $basedir,
     logdir      => $logdir,
@@ -14,13 +14,13 @@ define logscape::service  (
     group       => $group,
     down        => true,
   }
-  file { "${basedir}/runit/run":
+  file { "${basedir}/runit/logscape/run":
     ensure  => present,
     mode    => '0550',
     owner   => $user,
     group   => $group,
     content => template('logscape/run.erb'),
-    require => File["${basedir}/runit"],
+    require => File["${basedir}/runit/logscape"],
   }
   file { "${basedir}/service/logscape":
     ensure  => link,
@@ -28,6 +28,6 @@ define logscape::service  (
     owner   => $user,
     group   => $group,
     replace => false,
-    require => File["${basedir}/runit/run"],
+    require => File["${basedir}/runit/logscape/run"],
   }
 }

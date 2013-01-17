@@ -14,6 +14,11 @@ class logscape (
   $workspace        = '/root/logscape',
   $zone             = 'LOGSCAPE1',
 ) {
+  include runit
+  runit::user { $user:
+    basedir => $basedir,
+    group   => $group,
+  }
   class { 'logscape::install':
     basedir         => $basedir,
     base_port       => $base_port,
