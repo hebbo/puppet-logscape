@@ -8,7 +8,7 @@ echo "Logscape <%= @version %> start"
 # Set environment variables
 export JAVA_HOME=<%= @java_home %>
 export PATH=$JAVA_HOME/bin:<%= @installdir %>:$PATH
-export LC_CTYPE=UTF-8
+export LC_CTYPE=<%= @locale %>
 
 cd <%= @installdir %>
 exec java \

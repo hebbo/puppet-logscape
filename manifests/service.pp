@@ -6,13 +6,14 @@ class logscape::service  (
   $group,
 ) {
   $installdir = "${basedir}/logscape-${version}"
-  runit::service { "service-logscape-${version}-${basedir}":
+  runit::service { "logscape-${user}":
     service     => 'logscape',
     basedir     => $basedir,
     logdir      => $logdir,
     user        => $user,
     group       => $group,
     down        => true,
+    timestamp   => false,
   }
   file { "${basedir}/runit/logscape/run":
     ensure  => present,
