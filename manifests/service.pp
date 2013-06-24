@@ -10,6 +10,7 @@ class logscape::service  (
     service     => 'logscape',
     basedir     => $basedir,
     logdir      => '/var/log',
+
     user        => $user,
     group       => $group,
     down        => true,

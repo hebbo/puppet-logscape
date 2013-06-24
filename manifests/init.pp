@@ -21,6 +21,7 @@ class logscape (
   $workspace        = '/root/logscape',
   $zone             = 'LOGSCAPE1',
   $license_filename = 'sbet-prod-1.lic'
+
 ) {
   include runit
   runit::user { $user:

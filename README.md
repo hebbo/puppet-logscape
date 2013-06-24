@@ -2,11 +2,11 @@
 
 Install and configure a basic Logscape agent.
 
-## Usage: logscape::agent
+## Usage
 
-Include the logscape::agent module in your puppet configuration:
+Include the logscape module in your puppet configuration:
 
-    include logscape::agent
+    include logscape
 
 and add required hiera configuration - for example:
 

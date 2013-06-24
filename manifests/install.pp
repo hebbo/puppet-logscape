@@ -70,6 +70,7 @@ class logscape::install (
     require => Exec['logscape-unpack'],
     notify  => Class['logscape::service'],
   }
+<<<<<<< HEAD
   file { "${installdir}/conf/setup.conf":
       ensure  => present,
       owner   => $user,
@@ -88,6 +89,8 @@ class logscape::install (
     require => Exec['logscape-unpack'],
     notify  => Class['logscape::service'],
   }
+=======
+>>>>>>> 6e5de77812d5e26a223ccf289f4facadc27940e4
   file { "${basedir}/current":
     ensure  => link,
     target  => "logscape-${version}",
