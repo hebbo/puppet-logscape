@@ -1,6 +1,6 @@
 # puppet-logscape
 
-Install and configure a basic Logscape agent.
+Install and configure a basic Logscape agent or management host.
 
 ## Usage
 
@@ -10,9 +10,9 @@ Include the logscape module in your puppet configuration:
 
 and add required hiera configuration - for example:
 
-    logscape::type:             "%{hostname}Agent"
+    logscape::type:             "[Agent|Management]"
     logscape::version:          '1.3.00'
-    logscape::management_host:  'logscape.example.com'
+    logscape::management_host:  '[logscape.example.com|localhost]'
 
 or with all the options:
 
@@ -36,8 +36,9 @@ or with all the options:
     logscape::web_app_port:     '8080'
     logscape::workspace:        '/root/logscape'
     logscape::zone:             'LOGSCAPE1'
+    logscape::license_filename: 'mylicense-prod-1.lic'
 
-* *basedir*: Default: '/opt/logscape'
+* *basedir*: Default: '/apps/logscape1'
 
 * *base_port*: Default: '11000'
 
@@ -57,7 +58,7 @@ or with all the options:
 
 * *logdir*: Default: '/var/log/logscape'
 
-* *management_host*: Required.
+* *management_host*: 'localhost'.
 
 * *management_port*: Default: '11000'
 
