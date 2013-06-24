@@ -1,0 +1,31 @@
+{
+  "checksums": {
+    "manifests/init.pp": "4ac738cbdfa50771481de438459023c0",
+    "templates/run.erb": "0b7ac29508f29abaf97cd9372ead34d0",
+    "Rakefile": "f37e6131fe7de9a49b09d31596f5fbf1",
+    "Modulefile": "d93849e3a1a1b2b5c51bc3b5a6f4a883",
+    "templates/boot.properties.erb": "087081fce2b6a2cadff7aaab5ca0a52e",
+    "manifests/install.pp": "0db995db0293742c0ecbead858f99ae2",
+    "tests/init.pp": "f0d0e6872a46ea48d469fb27d8a44058",
+    "spec/spec_helper.rb": "3ea886dd135e120afa31e0aab12e85b0",
+    "README.md": "725ea0c95029193ab4bc9dded8543a21",
+    "manifests/service.pp": "db15cc994ac102004846579642435b4c"
+  },
+  "author": "erwbgy",
+  "dependencies": [
+    {
+      "version_requirement": ">= 0.4.0",
+      "name": "erwbgy/runit"
+    }
+  ],
+  "source": "https://github.com/erwbgy/puppet-logscape.git",
+  "types": [
+
+  ],
+  "license": "Apache License, Version 2.0",
+  "version": "0.2.0",
+  "description": "Install and basic configuration of an AnthillPro agent",
+  "name": "erwbgy-logscape",
+  "project_page": "http://forge.puppetlabs.com/erwbgy/logscape",
+  "summary": "Install an AnthillPro agent"
+}

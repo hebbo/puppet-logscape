@@ -1,0 +1,62 @@
+<configuration>
+    <appSettings>
+
+        <!-- NOTE:
+
+            This file contains configuration information to be applied to the install.
+            It is updated manually or will be updated when running install.bat/install.sh.
+
+            To Apply Changes when editing manually: Run configure.bat/configure.sh
+
+            -->
+
+        <!-- ESSENTIAL -->
+        <!-- The ROLE of the Agent, Management, LogForwarder etc -->
+        <add key="vso.resource.type" value="<%= @type %>"/>
+
+        <!-- Boot the manager in HA mode or not. HA uses more resources -->
+        <add key="vso.ha.enabled" value="<%= @ha_enabled %>"/>
+
+        <add key="LOGSCAPE_HOME" value="<%= @installdir %>"/>
+
+        <!-- Management Host and Port -->
+        <add key="MANAGEMENT_HOST" value="<%= @management_host %>"/>
+        <add key="MANAGEMENT_PORT" value="<%= @management_port %>"/>
+        <add key="vso.base.port" value="11000"/>
+
+        <!-- OPTIONAL -->
+        <add key="web.app.port" value="<%= @web_app_port %>"/>
+
+        <add key="vso.zone" value="<%= @zone %>"/>
+
+
+        <!-- only specify JavaHome when: JAVA_HOME is not set and 'java' is not on the path
+                *Best to set this value on Windows 2008, Windows 7 Platforms*
+        -->
+        <add key="JavaHome" value="<%= @java_home %>"/>
+
+
+        <!-- Windows ONLY -->
+        <!-- modify logscape.bat -->
+        <add key="boot.bat " value="stcp://$MANAGEMENT_HOST:$MANAGEMENT_PORT" file="logscape.bat"/>
+
+
+        <!-- logscape.ini & logscape64.ini -->
+        <add key="jrepath" value="$JavaHome"/>
+        <add key="wrkdir" value="WORKINGDIR"/>
+        <add key="jvmtype" value="client"/>
+        <add key="param04" value="stcp://$MANAGEMENT_HOST:$MANAGEMENT_PORT"/>
+
+
+        <!-- AGENT.CONF -->
+        <add key="wrapper.java.command" value="java" file="agent.conf"/>
+        <!-- Automatically be filled in using the variable specified above -->
+        <add key="wrapper.app.parameter.2" value="stcp://$MANAGEMENT_HOST:$MANAGEMENT_PORT" file="agent.conf"/>
+        <!-- RunAsAUser service settings; complete when you need nt-service to access file shares etc -->
+        <add key="wrapper.ntservice.account" value="" file="agent.conf"/>
+        <add key="wrapper.ntservice.password" value="" file="agent.conf"/>
+
+        <!-- AUTO filled in using the variable specified above -->
+        <add key="BOOT" value="<%= @type %>"/>
+    </appSettings>
+</configuration>

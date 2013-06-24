@@ -1,0 +1,18 @@
+vmargs=-Xms<%= @initial_heap %> -Xmx<%= @max_heap %> -XX:MaxPermSize=128m -XX:+HeapDumpOnOutOfMemoryError -Xrs -Xss<%= @stack_size %> -XX:CompileCommand=exclude,jregex/Pretokenizer,next -XX:+UseConcMarkSweepGC -XX:+UseCompressedOops -Dcom.sun.management.jmxremote.port=8989 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false
+
+# Debug mode flags (warning do not leave this enabled as it will lead to slow permgen mem leak)
+#-Xdebug -Xrunjdwp:transport=dt_socket,address=8990,server=y,suspend=n
+
+# Verbose GC
+#-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -Xloggc:work/gc.log
+
+sysprops=-DLOGSCAPE -Dvso.base.port=<%= @base_port %> -Dvso.boot.lookup.replication.port=<%= @replication_port %> -Dvso.resource.type=<%= @type %> -Dlog4j.configuration=./agent-log4j.properties -Dweb.app.port=<%= @web_app_port %> -Dfile.encoding=ISO-8859-1 -Dvso.zone=<%= @zone %> -Dnet.iface=<%= @interface %>
+
+mainclass=com.liquidlabs.vso.VSOMain
+sys-bundles=system-bundles
+deploy=downloads
+sharedConfig=downloads
+pre-cp=foo.jar
+post-cp=blah.jar
+# LOW or NORMAL process priority (applies to all platforms)
+priority=<%= @priority %>
